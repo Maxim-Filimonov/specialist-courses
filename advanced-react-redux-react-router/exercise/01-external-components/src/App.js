@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // Замените код ниже на слайдер.
   return (
     <div className="App">
       <header className="App-header">

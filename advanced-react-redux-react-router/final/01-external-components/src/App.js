@@ -1,25 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { ComparisonSlider } from 'react-comparison-slider';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ComparisonSlider
+      defaultValue={30}
+      aspectRatio={16 / 9}
+      orientation="horizontal"
+      itemOne={<img src="./puppy.jpeg" alt='puppy' />} itemTwo={<img src="./kitten.jpeg" alt='kitten' />} />
+  )
 }
 
 export default App;

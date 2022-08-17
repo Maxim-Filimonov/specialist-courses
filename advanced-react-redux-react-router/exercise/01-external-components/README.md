@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Упражнение 1 - Подключение сторонних компонентов.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Практически в любом React приложении вам в какой то момент понадобиться
+подключить сторонний компонент. Для этого могут быть разные причины:
 
-## Available Scripts
+- Добавить функциональность который нету в React - Redux.
+- Сохранить время на разработку своего компонента и его логики и вместо этого
+  использовать открытые наработки с Github - Material UI.
+- Выделить общие стили и соглашения в отдельные компоненты в вашей компании и
+  использовать их в различных приложения в вашей компании.
 
-In the project directory, you can run:
+В любом случае путь подключения компонентов примерно одинаковый - `npm` пакеты.
+В случае внутренних разработок возможно вы будете использовать частную версию
+`npm` репозитория, но принцип остается тот же.
 
-### `npm start`
+## import в React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Прежде чем мы начем подключать компонент, давайте сначала рассмотрим разные
+варианты подключение библиотек в React. React использует `import` синтакс для
+подключения модулей к файлу.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Самый простой его вариант это подключение `default` модуля.
 
-### `npm test`
+Модуль:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+export default const MyComponent = () => <h1>Hello World</h1>;
+```
 
-### `npm run build`
+В вашем приложении можно подключить модуль как обычно:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+import AnyName from "./MyComponent";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function App() {
+  return <AnyName />;
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Более сложный вариант подключение модуля это через `named`(именной) импорт
 
-### `npm run eject`
+```jsx
+export const MyComponent = () => <h1>Hello World</h1>;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+В вашем приложении можно подключить модуль через деструкцию объекта:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+import { MyComponent } from "./MyComponent";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+function App() {
+  return <MyComponent />;
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Задание
 
-## Learn More
+Добавьте компонент
+[react-comparison-slider](https://www.npmjs.com/package/react-comparison-slider)
+в App.js. Иногда авторы пакетов предпочитают альтернативые менеджеры библиотек -
+yarn. В таком случае синтакс просто перевести:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```shell
+# yarn add react-comparison-slider - тоже самое с альтернативным пакетным менеджером
+npm install react-comparison-slider
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Добавьте ReactCompareImage на главную страницу(`App.js`):
 
-### Code Splitting
+```jsx
+import { ComparisonSlider } from "react-comparison-slider";
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Заменить код компонента App на слайдер:
 
-### Analyzing the Bundle Size
+```jsx
+<ComparisonSlider
+  defaultValue={30}
+  aspectRatio={16 / 9}
+  orientation="horizontal"
+  itemOne={<img src="./puppy.jpeg" alt="puppy" />}
+  itemTwo={<img src="./kitten.jpeg" alt="kitten" />}
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Можете попробывать поменять разные свойства и посмотреть как компонент реагирует
+на их изменение. В результате мы подключили достаточно сложный компонент с
+богатой функциональностью с минимальными усилиями.
 
-### Making a Progressive Web App
+## Файлы
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- src/App.js
