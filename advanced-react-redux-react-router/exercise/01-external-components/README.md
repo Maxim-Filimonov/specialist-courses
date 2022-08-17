@@ -58,14 +58,14 @@ function App() {
 Добавьте компонент
 [react-comparison-slider](https://www.npmjs.com/package/react-comparison-slider)
 в App.js. Иногда авторы пакетов предпочитают альтернативые менеджеры библиотек -
-yarn. В таком случае синтакс просто перевести:
+`yarn`. В таком случае синтакс просто перевести:
 
 ```shell
 # yarn add react-comparison-slider - тоже самое с альтернативным пакетным менеджером
 npm install react-comparison-slider
 ```
 
-Добавьте ReactCompareImage на главную страницу(`App.js`):
+Добавьте ComparisonSlider на главную страницу(`App.js`):
 
 ```jsx
 import { ComparisonSlider } from "react-comparison-slider";
