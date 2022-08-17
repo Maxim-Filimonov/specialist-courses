@@ -23,9 +23,9 @@ async function go() {
     return;
   }
 
-  console.log(`🏎  Starting dev for ./${app.relativePath}`);
+  console.log(`🏎  Starting start for ./${app.relativePath}`);
 
-  cp.spawnSync(`npm run dev -s`, {
+  cp.spawnSync(`npm run start`, {
     // @ts-expect-error no idea what's up with this, but it works as expected
     cwd: app.fullPath,
     shell: true,

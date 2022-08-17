@@ -40,12 +40,12 @@ async function go() {
   }
 
   console.log(
-    `Showing diff between ${firstApp.relativePath}/app and ${secondApp.relativePath}/app`
+    `Showing diff between ${firstApp.relativePath}/src and ${secondApp.relativePath}/src`,
   );
 
   cp.spawnSync(
-    `git diff --no-index ./${firstApp.relativePath}/app ./${secondApp.relativePath}/app`,
-    { shell: true, stdio: "inherit" }
+    `git diff --no-index ./${firstApp.relativePath}/src ./${secondApp.relativePath}/src`,
+    { shell: true, stdio: "inherit" },
   );
 }
 

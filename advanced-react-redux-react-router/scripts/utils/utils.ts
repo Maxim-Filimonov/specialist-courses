@@ -211,14 +211,14 @@ export async function getWorkshopRoot() {
     const pkgPath = path.join(repoRoot, "package.json");
     if (await exists(pkgPath)) {
       const pkg = require(pkgPath);
-      if (pkg["specialist-course-root"]?.root) {
+      if (pkg["workshop"]?.root) {
         return repoRoot;
       }
     }
     repoRoot = path.dirname(repoRoot);
   }
   throw new Error(
-    `Workshop Root not found. Make sure the root of the workshop has "specialist-course-root" and "root: true" in the package.json.`
+    `Workshop Root not found. Make sure the root of the workshop has "workshop" and "root: true" in the package.json.`
   );
 }
 
