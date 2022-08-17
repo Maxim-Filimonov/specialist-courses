@@ -2,18 +2,17 @@
   "name": "specialist-react-2-course",
   "title": "Курс Реакт II - Redux, React Router, React CSS Animation  для центра Специалист при МГТУ им Н.Э.Баумана",
   "version": "1.0.0",
-  "specialist-course-root": {
+  "workshop": {
     "root": true
   },
   "description": "",
   "main": "index.js",
   "scripts": {
-    "typecheck": "tsc -b .",
     "lint": "node ./scripts/run-in-all.js \"npm run lint\"",
     "build": "node ./scripts/build",
     "dev": "node dev",
     "diff": "node diff",
-    "setup": "npm install && node ./scripts/setup && run-p typecheck lint build"
+    "setup": "npm install && node ./scripts/setup"
   },
   "repository": {
     "type": "git",
