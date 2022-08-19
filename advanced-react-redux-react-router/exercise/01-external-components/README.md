@@ -122,9 +122,11 @@ context'a. Попробуйте поменять цвет шрифта на кр
 
 ```
 const theme = createTheme({
-  status: {
-    danger: orange[500],
-  },
+  palette: {
+    primary: {
+      main: red[500],
+    }
+  }
 });
 ```
 
