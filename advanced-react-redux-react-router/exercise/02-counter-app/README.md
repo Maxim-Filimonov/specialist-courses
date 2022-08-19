@@ -47,3 +47,13 @@ decrement: (state) => {
 ```jsx
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 ```
+
+## Доп. Задание
+
+### 1. Написать тест в `counterSlice.spec.js` который тестирует reset функцию
+
+## Файлы
+
+- src/features/counter/Counter.js
+- src/features/counter/counterSlice.js
+- src/features/counter/counterSlice.spec.js
