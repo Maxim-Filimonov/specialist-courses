@@ -118,7 +118,7 @@ import Avatar from '@mui/material/Avatar';
 
 `Material ui` поддерживает изменение темы оформления через
 [использования](https://mui.com/material-ui/customization/theming/) react
-context'a. Попробуйте поменять цвет шрифта на красный:
+context'a. Попробуйте поменять главный цвет темы на красный:
 
 ```
 const theme = createTheme({
