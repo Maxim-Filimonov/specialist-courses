@@ -29,7 +29,6 @@ const reducer = createReducer({
   ]
 }, (builder) => builder.addCase(addBasketItemCount, (state, action) => {
   // в отличии от setItems мы можем напрямую обновлять состояние - спасибо `redux/toolkit`
-  // return { ...state, items: state.items.map(item => item.uid === action.payload.uid ? { ...item, qty: item.qty + action.payload.qty } : item) }
   state.items.find(x => x.uid === action.payload.uid).qty += action.payload.qty
 }));
 export default reducer;

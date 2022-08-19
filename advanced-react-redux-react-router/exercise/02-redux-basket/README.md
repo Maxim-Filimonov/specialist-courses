@@ -53,7 +53,9 @@ npm install react-redux
 ```js
 // создайте новый файл src/store.js
 import { configureStore } from "@reduxjs/toolkit";
-const store = configureStore({ reducer: () => {} });
+import reducer from "./reducer";
+export const setupStore = () => configureStore({ reducer: reducer });
+const store = setupStore();
 export default store;
 ```
 
@@ -62,8 +64,14 @@ export default store;
 
 ```js
 // создайте новый файл src/store.test.js
-import store from "./store";
-it("can handle an action", () => {
+import { setupStore } from "./store";
+
+let store;
+beforeEach(() => {
+  // before each test create a new store to avoid accidentally sharing state between tests
+  store = setupStore();
+});
+it("содержит товары", () => {
   // функция getState позволяет нам получить текущее состояние хранилища
   const state = store.getState();
 

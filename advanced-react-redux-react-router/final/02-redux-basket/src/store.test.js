@@ -1,6 +1,11 @@
-import store from './store';
+import { setupStore } from './store';
 import { addBasketItemCount } from './reducer';
 
+let store;
+beforeEach(() => {
+  // before each test create a new store to avoid accidentally sharing state between tests
+  store = setupStore();
+})
 
 it('содержит товары', () => {
   // функция getState позволяет нам получить текущее состояние хранилища
