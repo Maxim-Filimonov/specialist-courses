@@ -133,3 +133,4 @@ const theme = createTheme({
 ## Файлы
 
 - src/App.js
+- src/index.js
