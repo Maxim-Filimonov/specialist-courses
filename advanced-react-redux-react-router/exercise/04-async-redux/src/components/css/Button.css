@@ -1,0 +1,25 @@
+.btn {
+  padding: 5px 10px;
+  background: rgb(0, 87, 250);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+}
+.btn:hover {
+  background: rgb(58, 127, 255);
+  cursor: pointer;
+}
+.btn-proceed {
+  padding: 10px 20px;
+  display: block;
+  width: 100%;
+}
+.btn-dark{
+  background: rgb(0, 30, 86);
+  color: rgb(216, 216, 216);
+}
+.btn-dark:hover {
+  background: rgb(3, 48, 131);
+  color: rgb(216, 216, 216);
+  cursor: pointer;
+}
