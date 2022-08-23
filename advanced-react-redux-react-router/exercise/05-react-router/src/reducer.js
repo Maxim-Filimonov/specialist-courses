@@ -6,7 +6,7 @@ export const addBasketItemCount = createAction("ADD_BASKET_ITEM_COUNT");
 export const removeBasketItemCount = createAction("REMOVE_BASKET_ITEM_COUNT");
 export const changeBasketItemCount = createAction("CHANGE_BASKET_ITEM_COUNT");
 export const fetchItemsThunk = createAsyncThunk("items/fetchItems", async () => {
-  const res = await fetch("http://localhost:5004/items.json");
+  const res = await fetch(`${process.env.REACT_APP_URL}/items.json`);
   return res.json();
 })
 const reducer = createReducer(

@@ -92,11 +92,11 @@ import { Link } from "react-router-dom";
    к нему в доп. задании. Определите `const title = "React router"`
 
 3. `'content is not defined` - вместо content в React Router используется
-   специальный компонент `<Outlet>` - этот компонент позволяет определить
-   `Layout` - место в котором нужно отображать изменяемый контент потомков.
-   Можно смотреть на это как заглушки - Outlet ставиться как заглушка на которое
-   впоследствии взависимости от выбранного пользователям пути отрисуется нужный
-   реальный компонент.
+   специальный компонент `<Outlet>` - этот компонент позволяет определить в
+   `Layout` место в котором нужно отображать изменяемый контент потомков. Можно
+   смотреть на это как заглушки - `Outlet` ставиться как заглушка на место
+   которой впоследствии в зависимости от выбранного пользователям пути
+   отрисуется нужный реальный компонент.
 
 ```jsx
 import { Outlet } from "react-router";
@@ -115,35 +115,48 @@ React Router используется специальный набор комп
 
 Маршруты определяются следующим образом:
 
-````jsx
-
-React router будет выступать в качестве главной точки в наше приложение поэтому
-в index.js нам нужно заменить `root.render` на следующий код:
-
 ```jsx
+// index.js
+import BasketPlace from "./BasketPlace";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//...
-root.render(
+
+// Мы перенесем нашу основную разметку в отдельную переменную
+const appWithRedux = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+const routes = (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<div>Тут может быть перечень товаров</div>}>
-        <Route index element={<Home />} />
-        <Route path="teams" element={<Teams />}>
-          <Route path=":teamId" element={<Team />} />
-          <Route path="new" element={<NewTeamForm />} />
-          <Route index element={<LeagueStandings />} />
-        </Route>
+      {/* Главный путь определяет разметку для всего приложения */}
+      <Route path="/" element={appWithRedux}>
+        {/* Все родительские пути наследуют эту разметку */}
+        <Route index element={<div>Тут может быть перечень товаров</div>} />
+        <Route path="/basket" element={<BasketPlace />} />
+        <Route path="/about" element={<div>информация о компании</div>} />
+        <Route
+          path="/react-router"
+          element={<div>react router is here </div>}
+        />
       </Route>
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
 );
-````
+//....
+root.render(routes);
+```
 
 ## Доп. задания
+
+1.
 
 ## Файлы
 
 - src/App.js
-- src/components/Counter.js
-- src/components/Basket.js
 - src/index.js
+
+```
+
+```

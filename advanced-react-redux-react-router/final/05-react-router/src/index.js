@@ -5,15 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'react-redux';
+import BasketPlace from './BasketPlace'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+// Мы перенесем нашу основную разметку в отдельную переменную
 const appWithRedux = <Provider store={store}>
   <App />
 </Provider>;
+
 const routes = <BrowserRouter>
   <Routes>
+    {/* Главный путь определяет разметку для всего приложения */}
     <Route path="/" element={appWithRedux}>
+      {/* Все родительские пути наследуют эту разметку */}
       <Route index element={<div>Тут может быть перечень товаров</div>} />
+      <Route path="/basket" element={<BasketPlace />} />
+      <Route path="/about" element={<div>информация о компании</div>} />
+      <Route path="/react-router" element={<div>react router is here </div>} />
     </Route>
   </Routes>
 </BrowserRouter >;

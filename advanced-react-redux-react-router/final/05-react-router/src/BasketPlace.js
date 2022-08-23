@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchItemsThunk } from './reducer';
 
 
-export function BasketPlace() {
+export default function BasketPlace() {
   const isLoaded = useSelector(state => state.isLoaded);
   const error = useSelector(state => state.error);
   const dispatch = useDispatch();
