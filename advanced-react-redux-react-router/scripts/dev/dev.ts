@@ -25,12 +25,14 @@ async function go() {
 
   console.log(`🏎  Starting start for ./${app.relativePath}`);
 
+  const portNumber = app.portNumber;
+  const url = `http://localhost:${portNumber}`;
   cp.spawnSync(`npm run start`, {
     // @ts-expect-error no idea what's up with this, but it works as expected
     cwd: app.fullPath,
     shell: true,
     stdio: "inherit",
-    env: { PORT: app.portNumber, ...process.env },
+    env: { REACT_APP_URL: url, PORT: portNumber, ...process.env },
   });
 }
 
