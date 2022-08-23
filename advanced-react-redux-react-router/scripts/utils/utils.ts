@@ -89,7 +89,7 @@ function extractExtraCreditNumber(dir: string) {
   const number = regex.exec(dir)?.groups?.number;
   if (!number) {
     throw new Error(
-      `Extra credit directory ${dir} does not match regex ${regex}`
+      `Extra credit directory ${dir} does not match regex ${regex}`,
     );
   }
   return Number(number);
@@ -114,7 +114,11 @@ export async function getApps(): Promise<Array<App>> {
             const relativePath = path.join("exercise", dir);
             const exerciseNumber = extractExerciseNumber(dir);
             const fullPath = path.join(workshopRoot, relativePath);
-            const readme = await readFile(path.join(fullPath, "README.md"));
+
+            const readmePath = path.join(fullPath, "README.md");
+            console.debug("processing", readmePath);
+            const readme = await readFile(readmePath);
+
             const title = await getReadmeTitle(readme);
             if (dir.includes(".extra-")) {
               const extraCreditNumber = extractExtraCreditNumber(dir);
@@ -139,9 +143,9 @@ export async function getApps(): Promise<Array<App>> {
                 portNumber: 4000 + exerciseNumber,
               };
             }
-          })
+          }),
         );
-      }
+      },
     ),
     readDir(path.join(workshopRoot, "final")).then(
       (dirs): Promise<Array<FinalApp | ExtraCreditFinalApp>> => {
@@ -176,9 +180,9 @@ export async function getApps(): Promise<Array<App>> {
                 portNumber: 5000 + exerciseNumber,
               };
             }
-          })
+          }),
         );
-      }
+      },
     ),
     readDir(path.join(workshopRoot, "example")).then(
       (dirs): Promise<Array<ExampleApp>> => {
@@ -196,9 +200,9 @@ export async function getApps(): Promise<Array<App>> {
               title,
               portNumber: 5000 + index,
             };
-          })
+          }),
         );
-      }
+      },
     ),
   ]);
   return [...exerciseApps, ...finalApps, ...exampleApps];
@@ -218,7 +222,7 @@ export async function getWorkshopRoot() {
     repoRoot = path.dirname(repoRoot);
   }
   throw new Error(
-    `Workshop Root not found. Make sure the root of the workshop has "workshop" and "root: true" in the package.json.`
+    `Workshop Root not found. Make sure the root of the workshop has "workshop" and "root: true" in the package.json.`,
   );
 }
 
@@ -258,7 +262,7 @@ export async function promptForApp(defaultApp?: string) {
   const selectedApp = apps.find((a) => a.relativePath === selection);
   if (!selectedApp) {
     throw new Error(
-      `Could not find an app with your selection of "${selection}". Sorry!`
+      `Could not find an app with your selection of "${selection}". Sorry!`,
     );
   }
   return selectedApp;
@@ -281,7 +285,7 @@ export async function guessNextApp(app: App) {
 
   if (app.type === "exercise" || app.type === "extra-credit-exercise") {
     const finalVersion = apps.find(
-      (a) => a.relativePath === app.relativePath.replace("exercise", "final")
+      (a) => a.relativePath === app.relativePath.replace("exercise", "final"),
     );
     if (finalVersion) return finalVersion;
   }

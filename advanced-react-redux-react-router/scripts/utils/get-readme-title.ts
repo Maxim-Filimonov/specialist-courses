@@ -17,8 +17,9 @@ export async function getReadmeTitle(readme: string) {
   });
   if (!title) {
     const excerpt = readme.slice(0, 50);
+
     throw new Error(
-      `Could not find title in README.md. Here's an excerpt:\n\n${excerpt}`
+      `Could not find title in README.md. Here's an excerpt:\n\n${excerpt}`,
     );
   }
   return title.replace(/^\d+\. /, "").trim();
