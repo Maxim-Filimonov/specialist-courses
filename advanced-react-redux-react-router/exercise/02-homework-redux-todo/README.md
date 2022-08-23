@@ -95,7 +95,7 @@ reducer с помощью API `createReducer`, но для упрощения в
 ```js
 // store.js
 import reducer from "./taskSlice";
-const store = configureStore({ reducer: reducer });
+const store = configureStore({ reducer: { tasks: reducer } });
 ```
 
 Обратите внимание на терминал в котором еще запущен тест или перезапустите его -
